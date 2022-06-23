@@ -16,7 +16,7 @@ function App(props) {
   
   useEffect(()=>{
    
-    Axios.get('https://appointment0backend.herokuapp.com/requests1').then((res)=>{
+    Axios.get('https://appointment-backend-new-1.herokuapp.com/requests1').then((res)=>{
       setRequest1_list(res.data);
       console.log(res.data);
       
@@ -24,26 +24,26 @@ function App(props) {
     )
   },[]);
   const approve=(id)=>{
-    Axios.put("https://appointment0backend.herokuapp.com/approve",{
+    Axios.put("https://appointment-backend-new-1.herokuapp.com/approve",{
       id:id,
       approve:"Approved",
       email_send:"Elligible",
       
     });
     
-    Axios.put("https://appointment0backend.herokuapp.com/email_sending",{
+    Axios.put("https://appointment-backend-new-1.herokuapp.com/email_sending",{
       id:id,
       email_send:"Elligible",
     });
     
   }
   const reject=(id)=>{
-    Axios.put("https://appointment0backend.herokuapp.com/approve",{
+    Axios.put("https://appointment-backend-new-1.herokuapp.com/approve",{
       id:id,
       approve:"Rejected",
       email_send:"Elligible",
     });
-    Axios.put("https://appointment0backend.herokuapp.com/email_sending",{
+    Axios.put("https://appointment-backend-new-1.herokuapp.com/email_sending",{
       id:id,
       email_send:"Elligible",
     });
@@ -97,7 +97,7 @@ function App(props) {
         {request1_list.map((val,key)=>{
           return(
             <form>
-            <div className="list-group-item list-group-item-action list-group-item-danger" >Name : {val.userName}   Email : {val.email} Reason : {val.reason} <a href="/https://atharvabokade.github.io/email-accept/"> <button type="submit" id ="btn_req" onClick={()=>approve(val._id)} className="btn btn-success btn-sm">Approve</button></a>
+            <div className="list-group-item list-group-item-action list-group-item-danger" >Name : {val.userName}   Email : {val.email} Reason : {val.reason} <a href="https://atharvabokade.github.io/email-accept/"> <button type="submit" id ="btn_req" onClick={()=>approve(val._id)} className="btn btn-success btn-sm">Approve</button></a>
             <a href="https://atharvabokade.github.io/email-reject/"><button type="submit" id ="btn_req1" onClick={()=>reject(val._id)} className="btn btn-danger btn-sm">Reject</button></a>
             </div>
             </form>
